@@ -4,7 +4,7 @@
 #
 Name     : perl-bareword-filehandles
 Version  : 0.006
-Release  : 6
+Release  : 7
 URL      : https://cpan.metacpan.org/authors/id/I/IL/ILMARI/bareword-filehandles-0.006.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IL/ILMARI/bareword-filehandles-0.006.tar.gz
 Summary  : 'disables bareword filehandles'
