@@ -4,7 +4,7 @@
 #
 Name     : perl-bareword-filehandles
 Version  : 0.006
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/I/IL/ILMARI/bareword-filehandles-0.006.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IL/ILMARI/bareword-filehandles-0.006.tar.gz
 Summary  : 'disables bareword filehandles'
@@ -27,6 +27,7 @@ Summary: dev components for the perl-bareword-filehandles package.
 Group: Development
 Requires: perl-bareword-filehandles-lib = %{version}-%{release}
 Provides: perl-bareword-filehandles-devel = %{version}-%{release}
+Requires: perl-bareword-filehandles = %{version}-%{release}
 
 %description dev
 dev components for the perl-bareword-filehandles package.
