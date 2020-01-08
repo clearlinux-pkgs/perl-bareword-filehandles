@@ -4,14 +4,14 @@
 #
 Name     : perl-bareword-filehandles
 Version  : 0.007
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/I/IL/ILMARI/bareword-filehandles-0.007.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IL/ILMARI/bareword-filehandles-0.007.tar.gz
 Summary  : 'disables bareword filehandles'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
-Requires: perl-bareword-filehandles-lib = %{version}-%{release}
 Requires: perl-bareword-filehandles-license = %{version}-%{release}
+Requires: perl-bareword-filehandles-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(B::Hooks::OP::Check::Install::Files)
 BuildRequires : perl(ExtUtils::Depends)
@@ -25,22 +25,11 @@ version 0.007
 %package dev
 Summary: dev components for the perl-bareword-filehandles package.
 Group: Development
-Requires: perl-bareword-filehandles-lib = %{version}-%{release}
 Provides: perl-bareword-filehandles-devel = %{version}-%{release}
-Requires: perl-bareword-filehandles = %{version}-%{release}
 Requires: perl-bareword-filehandles = %{version}-%{release}
 
 %description dev
 dev components for the perl-bareword-filehandles package.
-
-
-%package lib
-Summary: lib components for the perl-bareword-filehandles package.
-Group: Libraries
-Requires: perl-bareword-filehandles-license = %{version}-%{release}
-
-%description lib
-lib components for the perl-bareword-filehandles package.
 
 
 %package license
@@ -51,8 +40,18 @@ Group: Default
 license components for the perl-bareword-filehandles package.
 
 
+%package perl
+Summary: perl components for the perl-bareword-filehandles package.
+Group: Default
+Requires: perl-bareword-filehandles = %{version}-%{release}
+
+%description perl
+perl components for the perl-bareword-filehandles package.
+
+
 %prep
 %setup -q -n bareword-filehandles-0.007
+cd %{_builddir}/bareword-filehandles-0.007
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -77,7 +76,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-bareword-filehandles
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-bareword-filehandles/LICENSE
+cp %{_builddir}/bareword-filehandles-0.007/LICENSE %{buildroot}/usr/share/package-licenses/perl-bareword-filehandles/8c974f0cc608934d7d9151d1c6a30369cd34b64d
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -90,16 +89,16 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/bareword/filehandles.pm
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/bareword::filehandles.3
 
-%files lib
-%defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/bareword/filehandles/filehandles.so
-
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-bareword-filehandles/LICENSE
+/usr/share/package-licenses/perl-bareword-filehandles/8c974f0cc608934d7d9151d1c6a30369cd34b64d
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/bareword/filehandles/filehandles.so
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/bareword/filehandles.pm
