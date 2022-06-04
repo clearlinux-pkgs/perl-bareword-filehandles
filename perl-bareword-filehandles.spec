@@ -4,7 +4,7 @@
 #
 Name     : perl-bareword-filehandles
 Version  : 0.007
-Release  : 19
+Release  : 20
 URL      : https://cpan.metacpan.org/authors/id/I/IL/ILMARI/bareword-filehandles-0.007.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IL/ILMARI/bareword-filehandles-0.007.tar.gz
 Summary  : 'disables bareword filehandles'
@@ -100,5 +100,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/bareword/filehandles/filehandles.so
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/bareword/filehandles.pm
+/usr/lib/perl5/*
